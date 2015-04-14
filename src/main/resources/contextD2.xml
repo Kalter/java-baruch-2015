@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean class="day2.lab01.DeprecatedOldShit"
+          id="deprecatedOldShit"/>
+    <bean class="day2.lab01.DeprecatedReplacementBeanFactoryPostProcessor"/>
+
+
+    <!--Context02-->
+    <bean class="day2.lab02.StringBuilderFactoryBean">
+        <property name="start" value="Start "/>
+        <property name="middle" value="Middle "/>
+        <property name="finish" value="Finish"/>
+    </bean>
+
+    <!--Context03-->
+    <bean class="day2.lab03.RandomQuoter"
+          name="quoter" scope="prototype"/>
+    <bean class="day2.lab03.SpeakingRobot"
+          name="robot" abstract="true"/>
+</beans>

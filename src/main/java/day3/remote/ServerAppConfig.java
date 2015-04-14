@@ -1,0 +1,27 @@
+package day3.remote;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.remoting.rmi.RmiServiceExporter;
+
+@Configuration
+@Order(1)
+public class ServerAppConfig {
+
+    @Bean
+    public AccountService accountService() {
+        return new AccountServiceImpl();
+    }
+
+    @Bean
+    public RmiServiceExporter serviceExporter() {
+        RmiServiceExporter rmiExporter = new RmiServiceExporter();
+        rmiExporter.setServiceName("AccountService");
+        rmiExporter.setService(accountService());
+        rmiExporter.setServiceInterface(AccountService.class);
+        rmiExporter.setRegistryPort(1199);
+        return rmiExporter;
+    }
+
+}
